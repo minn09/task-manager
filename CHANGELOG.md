@@ -24,15 +24,15 @@ Establecer las bases del proyecto con JavaScript vanilla y entender los fundamen
 #### Setup Inicial
 - [x] Configuración de Vite
 - [x] HTML semántico
-- [] CSS básico para estilos
+- [x] CSS básico para estilos
 
 #### Funcionalidad Core
 - [x] Crear nuevas tareas
 - [x] Editar tareas
 - [x] Eliminar tareas
 - [x] Marcar tareas como completadas
-- [ ] Listar tareas existentes
-- [ ] Contador de tareas pendientes
+- [x] Listar tareas existentes
+- [x] Contador de tareas pendientes
 
 #### Funcionalidades para mejor performance
 - [ ] Mover el ul.appendChild fuera del loop

@@ -1,8 +1,12 @@
 const input = document.querySelector("#input")
-const form = document.getElementById("#form")
-const button = document.getElementById("#new-task")
-const taskList = document.getElementById("#task-list")
+const form = document.getElementById("form")
+const button = document.getElementById("new-task")
+const taskList = document.getElementById("task-list")
 const ul = document.createElement("ul")
+
+taskList.append(ul)
+const existingTasks = document.getElementById('existing-tasks')
+let numberTask = 0
 
 form.addEventListener("submit", (e) => {
   e.preventDefault()
@@ -21,10 +25,14 @@ form.addEventListener("submit", (e) => {
     li.appendChild(editButton)
     li.appendChild(deleteButton)
     ul.appendChild(li)
+    numberTask++
+    existingTasks.textContent = numberTask
     input.value = ''
 
     deleteButton.addEventListener('click', () => {
       li.remove()
+      numberTask--
+      existingTasks.textContent = numberTask
     })
 
     editButton.addEventListener('click', () => {
@@ -60,7 +68,6 @@ form.addEventListener("submit", (e) => {
   } else {
     alert('La tarea debe de tener algo de texto')
   }
-  taskList.append(ul)
 })
 
 
