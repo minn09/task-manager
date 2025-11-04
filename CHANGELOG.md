@@ -35,19 +35,27 @@ Establecer las bases del proyecto con JavaScript vanilla y entender los fundamen
 - [x] Contador de tareas pendientes
 
 #### Funcionalidades para mejor performance
-- [ ] Mover el ul.appendChild fuera del loop
-- [ ] Separar la lógica en funciones más pequeñas
-- [ ] Usar nombres más descriptivos
-- [ ] Agregar persistencia con localStorage
-- [ ] Permitir marcar tareas como completadas
-- [ ] Validación mejorada
-- [ ] Prevenir edición vacía
-- [ ] Focus automático en el input después de agregar
+- Refactor a módulos
+  - [x] Mover el ul.appendChild fuera del loop
+  - [ ] Separar la lógica en funciones más pequeñas (una función por responsabilidad)
+  - [ ] Evitar repetición de código (crear funciones helper reutilizables)
+
+- localStorage + validaciones
+  - [ ] Agregar persistencia con localStorage
+
+- Mejoras UX (Enter/Escape/Focus)
+  - [ ] Focus automático en el input después de agregar
+  - [ ] Validación mejorada (usar `.trim()` para evitar espacios vacíos)
+  - [ ] Prevenir edición vacía (validar antes de guardar)
+  - [ ] Permitir marcar tareas como completadas (checkbox funcional con estilo)
+
+
+- OPCIONALES
+- [ ] Usar nombres más descriptivos (`numberTask` → `taskCount`)
+- [ ] Constantes para textos (crear objeto MESSAGES)
+- [ ] Confirmación antes de eliminar (usar `confirm()`)
 - [ ] Enter para guardar al editar / Escape para cancelar edición
-- [ ] Confirmación antes de eliminar
-- [ ] Evitar repetición de código
-- [ ] Mejor manejo de eventos
-- [ ] Constantes para textos
+- [ ] Mejor manejo de eventos (separar event listeners en funciones)
 
 #### Técnicas Aprendidas
 - Manipulación del DOM (`querySelector/getElementById`, `createElement`, `appendChild`)
