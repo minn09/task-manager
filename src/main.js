@@ -5,9 +5,15 @@ const ul = document.createElement("ul")
 
 taskList.append(ul)
 const existingTasks = document.getElementById('existing-tasks')
-let tasks = []
+const MESSAGES = {
+  'CONFIRM_DELETE': 'Quieres eliminar esta tarea?',
+  'LOCAL_STORAGE_NAME': 'tasks',
+}
 
-tasks = JSON.parse(localStorage.getItem('tasks')) || []
+let tasks = []
+let existTask = ''
+
+tasks = JSON.parse(localStorage.getItem(MESSAGES.LOCAL_STORAGE_NAME)) || []
 tasks.forEach(taskText => {
   const li = createTask(taskText)
   ul.append(li)
@@ -17,7 +23,7 @@ existingTasks.textContent = tasks.length
 const RESET_VALUE = ''
 
 function saveTasksLocal() {
-  return localStorage.setItem('tasks', JSON.stringify(tasks))
+  return localStorage.setItem(MESSAGES.LOCAL_STORAGE_NAME, JSON.stringify(tasks))
 }
 
 function createElementHTML(tag, textContent = null, type = null) {
@@ -46,6 +52,8 @@ function createTask(taskText) {
     if (index > -1) {
       tasks.splice(index, 1)
     }
+    let userResponse = confirm(MESSAGES.CONFIRM_DELETE)
+    if (!userResponse) return
     li.remove()
     saveTasksLocal()
     existingTasks.textContent = tasks.length
@@ -70,17 +78,11 @@ function createTask(taskText) {
     li.textContent = RESET_VALUE
     li.append(editInput, saveButton, cancelButton)
     editInput.value = taskTextInput.textContent
+    editInput.focus()
     existingTasks.textContent = tasks.length
     saveTasksLocal()
 
-    cancelButton.addEventListener('click', () => {
-      li.textContent = RESET_VALUE
-      li.append(checkbox, taskTextInput, editButton, deleteButton)
-      saveTasksLocal()
-      existingTasks.textContent = tasks.length
-    })
-
-    saveButton.addEventListener('click', () => {
+    const handleSave = () => {
       const oldText = taskTextInput.textContent
       const newText = editInput.value
       const index = tasks.indexOf(oldText)
@@ -92,8 +94,26 @@ function createTask(taskText) {
       li.append(checkbox, taskTextInput, editButton, deleteButton)
       saveTasksLocal()
       existingTasks.textContent = tasks.length
+    }
+
+    const handleCancel = () => {
+      li.textContent = RESET_VALUE
+      li.append(checkbox, taskTextInput, editButton, deleteButton)
+      saveTasksLocal()
+      existingTasks.textContent = tasks.length
+    }
+
+    editInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        handleSave()
+      }
+      if (e.key === 'Escape') {
+        handleCancel()
+      }
     })
 
+    cancelButton.addEventListener('click', () => handleCancel)
+    saveButton.addEventListener('click', () => handleSave)
   })
   return li
 }
@@ -102,6 +122,11 @@ form.addEventListener("submit", (e) => {
   e.preventDefault()
   if (input.value.trim() !== '') {
     const taskText = input.value.trim()
+    const existThisTask = tasks.some(item => item === taskText)
+    if (existThisTask) {
+      alert(`Esta tarea ya existe: ${taskText}`)
+      return
+    }
     const li = createTask(taskText)
     input.focus()
     tasks.push(taskText)

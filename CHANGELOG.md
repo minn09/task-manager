@@ -48,13 +48,13 @@ Establecer las bases del proyecto con JavaScript vanilla y entender los fundamen
   - [x] Validación mejorada (usar `.trim()` para evitar espacios vacíos)
   - [x] Prevenir edición vacía (validar antes de guardar)
   - [x] Permitir marcar tareas como completadas (checkbox funcional con estilo)
-
+  - [x] Permitir saber si la tarea ya existe
 - OPCIONALES
-- [ ] Usar nombres más descriptivos (`numberTask` → `taskCount`)
-- [ ] Constantes para textos (crear objeto MESSAGES)
-- [ ] Confirmación antes de eliminar (usar `confirm()`)
-- [ ] Enter para guardar al editar / Escape para cancelar edición
-- [ ] Mejor manejo de eventos (separar event listeners en funciones)
+- [x] Usar nombres más descriptivos (`numberTask` → `taskCount`)
+- [x] Constantes para textos (crear objeto MESSAGES)
+- [x] Confirmación antes de eliminar (usar `confirm()`)
+- [x] Enter para guardar al editar / Escape para cancelar edición
+- [x] Mejor manejo de eventos (separar event listeners en funciones)
 
 #### Técnicas Aprendidas
 - Manipulación del DOM (`querySelector/getElementById`, `createElement`, `appendChild`)
@@ -62,11 +62,6 @@ Establecer las bases del proyecto con JavaScript vanilla y entender los fundamen
 - Manejo de arrays con métodos ES6 (`map`, `filter`, `find`)
 - Template literals
 - Módulos ES6 (import/export)
-
-### 📝 Notas de Desarrollo
-- Se utilizó el patrón de diseño con funciones puras
-- El estado se manejó con un array simple en memoria
-- Sin persistencia de datos en esta fase
 
 ---
 
