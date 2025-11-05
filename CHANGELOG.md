@@ -37,18 +37,17 @@ Establecer las bases del proyecto con JavaScript vanilla y entender los fundamen
 #### Funcionalidades para mejor performance
 - Refactor a módulos
   - [x] Mover el ul.appendChild fuera del loop
-  - [ ] Separar la lógica en funciones más pequeñas (una función por responsabilidad)
-  - [ ] Evitar repetición de código (crear funciones helper reutilizables)
+  - [x] Separar la lógica en funciones más pequeñas (una función por responsabilidad)
+  - [x] Evitar repetición de código (crear funciones helper reutilizables)
 
 - localStorage + validaciones
-  - [ ] Agregar persistencia con localStorage
+  - [x] Agregar persistencia con localStorage
 
 - Mejoras UX (Enter/Escape/Focus)
-  - [ ] Focus automático en el input después de agregar
-  - [ ] Validación mejorada (usar `.trim()` para evitar espacios vacíos)
-  - [ ] Prevenir edición vacía (validar antes de guardar)
-  - [ ] Permitir marcar tareas como completadas (checkbox funcional con estilo)
-
+  - [x] Focus automático en el input después de agregar
+  - [x] Validación mejorada (usar `.trim()` para evitar espacios vacíos)
+  - [x] Prevenir edición vacía (validar antes de guardar)
+  - [x] Permitir marcar tareas como completadas (checkbox funcional con estilo)
 
 - OPCIONALES
 - [ ] Usar nombres más descriptivos (`numberTask` → `taskCount`)

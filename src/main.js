@@ -1,72 +1,116 @@
 const input = document.querySelector("#input")
 const form = document.getElementById("form")
-const button = document.getElementById("new-task")
 const taskList = document.getElementById("task-list")
 const ul = document.createElement("ul")
 
 taskList.append(ul)
 const existingTasks = document.getElementById('existing-tasks')
-let numberTask = 0
+let tasks = []
+
+tasks = JSON.parse(localStorage.getItem('tasks')) || []
+tasks.forEach(taskText => {
+  const li = createTask(taskText)
+  ul.append(li)
+})
+
+existingTasks.textContent = tasks.length
+const RESET_VALUE = ''
+
+function saveTasksLocal() {
+  return localStorage.setItem('tasks', JSON.stringify(tasks))
+}
+
+function createElementHTML(tag, textContent = null, type = null) {
+  const element = document.createElement(tag)
+  if (textContent !== null) {
+    element.textContent = textContent
+    return element
+  }
+  if (type !== null) {
+    element.type = type
+    return element
+  }
+  return element
+}
+
+function createTask(taskText) {
+  const li = createElementHTML("li")
+  const editButton = createElementHTML('button', 'Editar')
+  const deleteButton = createElementHTML('button', "Eliminar")
+  const taskTextInput = createElementHTML('p', taskText)
+  const checkbox = createElementHTML('input', null, 'checkbox')
+
+  li.append(checkbox, taskTextInput, editButton, deleteButton)
+  deleteButton.addEventListener('click', () => {
+    const index = tasks.indexOf(taskTextInput.textContent)
+    if (index > -1) {
+      tasks.splice(index, 1)
+    }
+    li.remove()
+    saveTasksLocal()
+    existingTasks.textContent = tasks.length
+  })
+
+  checkbox.addEventListener('change', () => {
+    if (checkbox.checked) {
+      taskTextInput.classList.add('completed')
+      editButton.classList.add('completed')
+      deleteButton.classList.add('completed')
+    } else {
+      taskTextInput.classList.remove('completed')
+      editButton.classList.remove('completed')
+      deleteButton.classList.remove('completed')
+    }
+  })
+
+  editButton.addEventListener('click', () => {
+    const editInput = createElementHTML('input', taskTextInput.textContent)
+    const saveButton = createElementHTML('button', 'Guardar')
+    const cancelButton = createElementHTML('button', 'Cancelar')
+    li.textContent = RESET_VALUE
+    li.append(editInput, saveButton, cancelButton)
+    editInput.value = taskTextInput.textContent
+    existingTasks.textContent = tasks.length
+    saveTasksLocal()
+
+    cancelButton.addEventListener('click', () => {
+      li.textContent = RESET_VALUE
+      li.append(checkbox, taskTextInput, editButton, deleteButton)
+      saveTasksLocal()
+      existingTasks.textContent = tasks.length
+    })
+
+    saveButton.addEventListener('click', () => {
+      const oldText = taskTextInput.textContent
+      const newText = editInput.value
+      const index = tasks.indexOf(oldText)
+      if (index > -1) {
+        tasks[index] = newText
+      }
+      taskTextInput.textContent = newText
+      li.textContent = RESET_VALUE
+      li.append(checkbox, taskTextInput, editButton, deleteButton)
+      saveTasksLocal()
+      existingTasks.textContent = tasks.length
+    })
+
+  })
+  return li
+}
 
 form.addEventListener("submit", (e) => {
   e.preventDefault()
-  if (input.value !== '') {
-    const li = document.createElement("li")
-    const editButton = document.createElement("button")
-    const deleteButton = document.createElement("button")
-    const taskText = document.createElement('p', 'task-text')
-    const checkbox = document.createElement('input')
-    checkbox.type = 'checkbox'
-    editButton.textContent = 'Editar'
-    deleteButton.textContent = 'Eliminar'
-    taskText.textContent = input.value
-    li.appendChild(checkbox)
-    li.appendChild(taskText)
-    li.appendChild(editButton)
-    li.appendChild(deleteButton)
-    ul.appendChild(li)
-    numberTask++
-    existingTasks.textContent = numberTask
-    input.value = ''
-
-    deleteButton.addEventListener('click', () => {
-      li.remove()
-      numberTask--
-      existingTasks.textContent = numberTask
-    })
-
-    editButton.addEventListener('click', () => {
-
-      const editInput = document.createElement('input')
-      const saveButton = document.createElement('button')
-      const cancelButton = document.createElement('button')
-
-      saveButton.textContent = "Save"
-      cancelButton.textContent = "Cancel"
-
-      editInput.value = taskText.textContent
-      li.textContent = ''
-      li.appendChild(editInput)
-      li.appendChild(saveButton)
-      li.appendChild(cancelButton)
-
-      cancelButton.addEventListener('click', () => {
-        li.innerHTML = ''
-        li.appendChild(taskText)
-        li.appendChild(editButton)
-        li.appendChild(deleteButton)
-      })
-
-      saveButton.addEventListener('click', () => {
-        li.innerHTML = ''
-        taskText.textContent = editInput.value
-        li.appendChild(taskText)
-        li.appendChild(editButton)
-        li.appendChild(deleteButton)
-      })
-    })
+  if (input.value.trim() !== '') {
+    const taskText = input.value.trim()
+    const li = createTask(taskText)
+    input.focus()
+    tasks.push(taskText)
+    ul.append(li)
+    saveTasksLocal()
+    existingTasks.textContent = tasks.length
+    input.value = RESET_VALUE
   } else {
-    alert('La tarea debe de tener algo de texto')
+    alert('La tarea no debe de estar vacio')
   }
 })
 
