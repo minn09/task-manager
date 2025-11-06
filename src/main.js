@@ -26,8 +26,11 @@ function saveTasksLocal() {
   return localStorage.setItem(MESSAGES.LOCAL_STORAGE_NAME, JSON.stringify(tasks))
 }
 
-function createElementHTML(tag, textContent = null, type = null) {
+function createElementHTML(tag, textContent = null, type = null, className = null) {
   const element = document.createElement(tag)
+  if (className !== null) {
+    element.className = className
+  }
   if (textContent !== null) {
     element.textContent = textContent
     return element
@@ -41,8 +44,9 @@ function createElementHTML(tag, textContent = null, type = null) {
 
 function createTask(taskText) {
   const li = createElementHTML("li")
-  const editButton = createElementHTML('button', 'Editar')
-  const deleteButton = createElementHTML('button', "Eliminar")
+  const editButton = createElementHTML('button', 'Editar', null, 'edit-button')
+  const deleteButton = createElementHTML('button', "Eliminar", null, 'delete-button')
+  // TODO: this element need a name or id. https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input
   const taskTextInput = createElementHTML('p', taskText)
   const checkbox = createElementHTML('input', null, 'checkbox')
 
@@ -138,6 +142,21 @@ form.addEventListener("submit", (e) => {
     alert('La tarea no debe de estar vacio')
   }
 })
+
+
+/**
+ * Event Delegation, es una mejor implementacion para no tener muchos eventos
+ * Burbujea hacia arriba, el evento llega al boton y luego al su padre y asi sucesivamente
+ * boton > li > ul > main > section > div#app > body > html > document
+ * Esto es la propagacion de eventos, y lo que estamos haciendo es poder interceptar eventos en cualquier nivel
+ */
+
+// taskList.addEventListener('click', (event) => {
+//   const element = event.target
+//   if (element.classList.contains('edit-button')) {
+//     console.log('es el boton');
+//   }
+// })
 
 
 /** NOTAS
