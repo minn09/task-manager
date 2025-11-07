@@ -65,7 +65,86 @@ Establecer las bases del proyecto con JavaScript vanilla y entender los fundamen
 
 ---
 
-## v2.0 - Migración a React (PRONTO)
+## v2.0 - Migración a React
+### 🎯 Objetivos de la Fase
+Refactorizar la aplicación a React para mejorar la organización del código y preparar el terreno para características más complejas.
+
+### 📦 Migracion minima de React (OPCIONAL)
+> Nota: Esta sección es opcional y documenta cómo migrar un proyecto Vite vanilla a React.
+1.  Instalar el plugin oficial de Vite para React `npm install @vitejs/plugin-react -E`
+  1.1. La version plugin-react, usa esbuild and Babel. `https://vite.dev/plugins/#vitejs-plugin-react`, mientras que la version swc, remplaza babel por SWC
+  y en la build usa SWC mas esbuild `https://vite.dev/plugins/#vitejs-plugin-react-swc`
+2.  Instalar las dependencias core de React `npm install react react-dom -E`
+3.  Crear y configurar el archivo de configuración de Vite (`vite.config.js`) con el plugin de React
+```js
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+  plugins: [react()],
+});
+```
+
+4. Configurar el punto de entrada de la aplicación (`main.jsx`) con ReactDOM
+```js
+import { createRoot } from "react-dom/client";
+const root = createRoot(document.getElementById("app"));
+root.render(<h1>Hola Mundo</h1>);
+```
+
+5. Instalar ESlint `npm init @eslint/config@latest`
+6. Instalar Prettier para ESlint `npm install -D -E eslint-config-prettier`
+```js
+import globals from "globals";
+import pluginReact from "eslint-plugin-react";
+import eslintConfigPrettier from "eslint-config-prettier";
+import { defineConfig } from "eslint/config";
+
+export default defineConfig([
+  pluginReact.configs.flat.recommended, // Primero importas la config recomendada de React
+  {
+    files: ["**/*.{js,mjs,cjs,jsx}"],
+    languageOptions: {
+      globals: globals.browser,
+    },
+    rules: {
+      // Y luego sobreescribes lo que quieras
+      "react/react-in-jsx-scope": "off",
+    },
+    settings: {
+      react: {
+        version: "detect",
+      },
+    },
+  },
+  eslintConfigPrettier,
+]);
+```
+
+### ✅ Características Implementadas
+
+#### Arquitectura React
+- [ ] Conversión a componentes React
+- [ ] Separación de responsabilidades por componentes
+- [ ] Uso de JSX para el renderizado
+- [ ] Props para comunicación entre componentes
+
+#### Componentes Creados
+- [ ] `App` - Componente principal
+- [ ] `TaskList` - Lista de tareas
+- [ ] `TaskItem` - Item individual de tarea
+- [ ] `TaskForm` - Formulario para agregar tareas
+- [ ] `TaskFilter` - Filtros de visualización
+
+#### Hooks Implementados
+- [ ] `useState` - Manejo de estado local
+- [ ] `useEffect` - Efectos secundarios
+
+#### Funcionalidades Mejoradas
+- [ ] Re-renderizado eficiente
+- [ ] Filtrado de tareas (Todas / Activas / Completadas)
+- [ ] Validación básica de formularios
+- [ ] Interfaz más reactiva
 ---
 
 ## v3.0 - Nivel Medio (PRONTO)
