@@ -11,7 +11,9 @@ export default defineConfig([
       globals: globals.browser,
     },
     rules: {
-      "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off", // Desactiva la verificación de tipos con PropTypes.Esto se usa cuando el proyecto utiliza TypeScript (ya que los tipos ya están definidos allí) o cuando no se necesita validar props manualmente.
+
+      "react/react-in-jsx-scope": "off", // Desactiva la regla que exige importar React en cada archivo con JSX. En versiones modernas de React (17+), ya no es necesario importar React explícitamente, porque el compilador JSX lo maneja automáticamente.
     },
     settings: {
       react: {
