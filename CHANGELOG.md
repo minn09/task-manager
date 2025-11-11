@@ -127,24 +127,24 @@ export default defineConfig([
 - [x] Conversión a componentes React
 - [x] Separación de responsabilidades por componentes
 - [x] Uso de JSX para el renderizado
-- [ ] Props para comunicación entre componentes
+- [x] Props para comunicación entre componentes
 
 #### Componentes Creados
 - [x] `App` - Componente principal
-- [ ] `TaskList` - Lista de tareas
-- [ ] `TaskItem` - Item individual de tarea
-- [ ] `TaskForm` - Formulario para agregar tareas
-- [ ] `TaskFilter` - Filtros de visualización
+- [x] `TaskList` - Lista de tareas
+- [x] `TaskItem` - Item individual de tarea
+- [x] `TaskForm` - Formulario para agregar tareas
+- [x] `TaskFilter` - Filtros de visualización
 
 #### Hooks Implementados
 - [x] `useState` - Manejo de estado local
-- [ ] `useEffect` - Efectos secundarios
+- [x] `useEffect` - Efectos secundarios
 
 #### Funcionalidades Mejoradas
 - [ ] Re-renderizado eficiente
-- [ ] Filtrado de tareas (Todas / Activas / Completadas)
+- [x] Filtrado de tareas (Todas / Activas / Completadas)
 - [x] Validación básica de formularios
-- [ ] Interfaz más reactiva
+- [x] Interfaz más reactiva
 ---
 
 ## v3.0 - Nivel Medio (PRONTO)
