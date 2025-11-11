@@ -1,41 +1,33 @@
 import useTask from './useTask';
+import { TaskForm } from './TaskForm';
+import { TaskList } from './TaskList';
+import { TaskFilter } from './TaskFilter';
 
 export default function App() {
-  const { tasks, inputValue, editingIndex, handleSubmit, handleInputChange, handleKeyDown, editTask, cancelTask, deleteTask } = useTask()
+  const { tasks, inputValue, editingIndex, handleSubmit, handleInputChange, handleKeyDown, editTask, cancelTask, deleteTask, toggleTask } = useTask()
 
   return (
     <div>
       <h1>Task manager</h1>
+      <TaskForm
+        handleSubmit={handleSubmit}
+        handleInputChange={handleInputChange}
+        handleKeyDown={handleKeyDown}
+        cancelTask={cancelTask}
+        inputValue={inputValue}
+        editingIndex={editingIndex}
+      />
 
-      <form onSubmit={handleSubmit}>
-        <input
-          autoFocus
-          type="text"
-          value={inputValue}
-          placeholder="Escribe una tarea..."
-          onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
-        />
-        <button>{editingIndex !== null ? 'Update' : 'Save'}</button>
-        {editingIndex !== null && <button onClick={cancelTask}>Cancel</button>}
-      </form>
+      <TaskList
+        tasks={tasks}
+        editTask={editTask}
+        deleteTask={deleteTask}
+        toggleTask={toggleTask}
+      />
 
-      <div className="task-container">
-        {tasks.length === 0
-          ? (<p>No hay ninguna tarea</p>)
-          : (
-            <ul>
-              {tasks.map((task, index) => (
-                <li key={index}>
-                  {task}
-                  <button onClick={() => editTask(index)}>Edit</button>
-                  <button onClick={() => deleteTask(index)}>Delete</button>
-                </li>
-              ))}
-            </ul>
-          )}
-      </div>
-
+      <TaskFilter
+        tasks={tasks}
+      />
     </div>
   )
 }
