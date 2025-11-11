@@ -124,26 +124,26 @@ export default defineConfig([
 ### ✅ Características Implementadas
 
 #### Arquitectura React
-- [ ] Conversión a componentes React
-- [ ] Separación de responsabilidades por componentes
-- [ ] Uso de JSX para el renderizado
+- [x] Conversión a componentes React
+- [x] Separación de responsabilidades por componentes
+- [x] Uso de JSX para el renderizado
 - [ ] Props para comunicación entre componentes
 
 #### Componentes Creados
-- [ ] `App` - Componente principal
+- [x] `App` - Componente principal
 - [ ] `TaskList` - Lista de tareas
 - [ ] `TaskItem` - Item individual de tarea
 - [ ] `TaskForm` - Formulario para agregar tareas
 - [ ] `TaskFilter` - Filtros de visualización
 
 #### Hooks Implementados
-- [ ] `useState` - Manejo de estado local
+- [x] `useState` - Manejo de estado local
 - [ ] `useEffect` - Efectos secundarios
 
 #### Funcionalidades Mejoradas
 - [ ] Re-renderizado eficiente
 - [ ] Filtrado de tareas (Todas / Activas / Completadas)
-- [ ] Validación básica de formularios
+- [x] Validación básica de formularios
 - [ ] Interfaz más reactiva
 ---
 
