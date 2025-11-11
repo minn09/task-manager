@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function useTask() {
   const [tasks, setTasks] = useState(() =>
@@ -7,25 +7,29 @@ export default function useTask() {
   const [inputValue, setInputValue] = useState('');
   const [editingIndex, setEditingIndex] = useState(null)
 
+  // Guarda las tareas en localStorage cada vez que cambian
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+  }, [tasks])
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (inputValue.trim() !== '') {
-      if (editingIndex !== null) {
-        // Edicion de una tarea
-        const newTasks = tasks.map((task, index) =>
-          index === editingIndex ? inputValue : task
-        )  // Cuando el índice coincide con editingIndex, reemplazar esa tarea con lo que está en el input de lo contrario mantener la tarea original sin cambios
-        localStorage.setItem('tasks', JSON.stringify(newTasks))
-        setInputValue('')
-        setEditingIndex(null)
-        setTasks(newTasks)
-      } else {
-        // Creacion de una tarea
-        const newTasks = [...tasks, inputValue]
-        setTasks(newTasks)
-        localStorage.setItem('tasks', JSON.stringify(newTasks))
-        setInputValue('')
-      }
+    const inputValueTrimmed = inputValue.trim()
+    if (!inputValueTrimmed) return
+
+    if (editingIndex !== null) {
+      // Edicion de una tarea
+      const newTasks = tasks.map((task, index) =>
+        index === editingIndex ? { ...task, text: inputValueTrimmed } : task
+      )  // Cuando el índice coincide con editingIndex, reemplazar esa tarea con lo que está en el input de lo contrario mantener la tarea original sin cambios
+      setInputValue('')
+      setEditingIndex(null)
+      setTasks(newTasks)
+    } else {
+      // Creacion de una tarea
+      const newTasks = [...tasks, { text: inputValueTrimmed, completed: false }]
+      setTasks(newTasks)
+      setInputValue('')
     }
   }
 
@@ -60,7 +64,14 @@ export default function useTask() {
     localStorage.setItem('tasks', JSON.stringify(updatedTask))
   }
 
+  const toggleTask = (itemId) => {
+    const updatedTask = tasks.map((task, index) =>
+      index === itemId ? { ...task, completed: !task.completed } : task
+    )
+    setTasks(updatedTask)
+  }
+
   return {
-    tasks, inputValue, editingIndex, handleSubmit, handleInputChange, handleKeyDown, editTask, cancelTask, deleteTask
+    tasks, inputValue, editingIndex, handleSubmit, handleInputChange, handleKeyDown, editTask, cancelTask, deleteTask, toggleTask
   }
 }
