@@ -141,7 +141,7 @@ export default defineConfig([
 - [x] `useEffect` - Efectos secundarios
 
 #### Funcionalidades Mejoradas
-- [ ] Re-renderizado eficiente
+- [x] Re-renderizado eficiente
 - [x] Filtrado de tareas (Todas / Activas / Completadas)
 - [x] Validación básica de formularios
 - [x] Interfaz más reactiva
