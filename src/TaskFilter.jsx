@@ -23,7 +23,7 @@ export function TaskFilter({ tasks }) {
         <div>
           {pending.length === 0
             ? 'No hay tareas pendientes'
-            : tasks.map((task, index) =>
+            : pending.map((task, index) =>
             (
               <ul key={index}>
                 <li>{task.text}</li>
@@ -37,7 +37,7 @@ export function TaskFilter({ tasks }) {
         <div>
           {finished.length === 0
             ? 'No hay tareas finalizadas'
-            : tasks.map((task, index) =>
+            : finished.map((task, index) =>
             (
               <ul key={index}>
                 <li>{task.text}</li>
