@@ -49,7 +49,7 @@ export default function useTask() {
   }
 
   const editTask = (itemId) => {
-    setInputValue(tasks[itemId])
+    setInputValue(tasks[itemId].text)
     setEditingIndex(itemId)
   }
 
