@@ -185,7 +185,6 @@ Implementar patrones de estado global y routing profesional.
 - [ ] `useTasks` - Hook personalizado que consume el contexto
 
 #### Nuevas Features
-- [ ] 404 Not Found page
 - [ ] Manejo de errores sofisticado
 - [ ] Categorías/etiquetas para tareas
 - [ ] Modal para crear/editar tareas
