@@ -8,8 +8,11 @@ Registro detallado de todos los cambios, características y mejoras implementada
 
 - [v1.0 - Fundamentos con Vanilla JS](#v10---fundamentos-con-vanilla-js)
 - [v2.0 - Migración a React](#v20---migración-a-react)
-- [v3.0 - Nivel Medio](#v30---nivel-medio-en-progreso)
-- [v4.0 - Nivel Avanzado](#v40---nivel-avanzado-planificado)
+- [v3.0 - Nivel Medio](#v30---nivel-medio)
+- [v4.0 - Nivel Intermedio-Avanzado](#v40---nivel-intermedio-avanzado)
+- [v5.0 - Backend Fundamentos (Node.js Vanilla)](#v50---backend-fundamentos-nodejs-vanilla)
+- [v6.0 - Backend con Express](#v60---backend-con-express)
+- [v7.0 - Backend con Base de Datos](#v70---backend-con-base-de-datos)
 
 ---
 
@@ -147,8 +150,237 @@ export default defineConfig([
 - [x] Interfaz más reactiva
 ---
 
-## v3.0 - Nivel Medio (PRONTO)
+## v3.0 - Nivel Medio
+
+### 🎯 Objetivos de la Fase
+Expandir funcionalidad y mejorar la arquitectura de componentes.
+
+#### Routing basico
+- [ ] window.location.pathname (MPA -> Multi Page Aplication)
+- [ ] Rutas:
+  - [ ] `/`          - Home con todas las tareas
+  - [ ] `/active`    - Tareas activas
+  - [ ] `/completed` - Tareas completadas
+
+#### Formularios Mejorados
+- [ ] Validaciones básicas
+- [ ] Feedback visual de errores
+
+#### Primeros customs hooks
+- [ ] `useTaskForm` - Hook para el formulario
+- [ ] `useLocalStorage` - Hook para persistencia
+- [ ] `useFilter` - Hook para filtros
+- [ ] `useSearch` - Hook para búsqueda
+
 ---
 
-## v4.0 - Nivel Avanzado (PRONTO)
+## v4.0 - Nivel Intermedio-Avanzado
 
+### 🎯 Objetivos de la Fase
+Implementar patrones de estado global y routing profesional.
+
+#### Gestión de Estado Global
+- [ ] Context API para estado compartido
+- [ ] Reducers para lógica compleja de tareas
+- [ ] `useTasks` - Hook personalizado que consume el contexto
+
+#### Nuevas Features
+- [ ] 404 Not Found page
+- [ ] Manejo de errores sofisticado
+- [ ] Categorías/etiquetas para tareas
+- [ ] Modal para crear/editar tareas
+
+## v5.0 - Backend Fundamentos (Node.js Vanilla)
+
+### 🎯 Objetivos de la Fase
+Construir un servidor HTTP básico con Node.js puro y entender los fundamentos del backend.
+
+### ✅ Características a Implementar
+
+#### Setup Inicial
+- [ ] Inicializar proyecto Node.js (`npm init`)
+- [ ] Crear estructura de carpetas básica
+  ```
+  backend/
+  ├── server.js
+  ├── data/
+  │   └── tasks.json
+  └── package.json
+  ```
+- [ ] Configurar scripts en package.json (`start`, `dev`)
+
+#### Servidor HTTP Básico
+- [ ] Crear servidor con módulo `http` de Node.js
+- [ ] Configurar puerto y hostname
+- [ ] Implementar manejo básico de rutas
+- [ ] Parsear body de requests manualmente
+- [ ] Configurar CORS básico
+
+#### API REST con Node Vanilla
+- [ ] `GET /tasks` - Obtener todas las tareas
+- [ ] `POST /tasks` - Crear nueva tarea
+- [ ] `PUT /tasks/:id` - Actualizar tarea
+- [ ] `DELETE /tasks/:id` - Eliminar tarea
+- [ ] `GET /tasks/:id` - Obtener tarea específica
+
+#### Persistencia con File System
+- [ ] Usar módulo `fs` para leer/escribir archivo JSON
+- [ ] Implementar funciones CRUD con `fs.promises`
+- [ ] Manejo de errores al leer/escribir archivos
+- [ ] Validación básica de datos
+
+#### Funcionalidades Core
+- [ ] Generar IDs únicos (UUID o timestamp)
+- [ ] Validación de datos de entrada
+- [ ] Respuestas JSON estructuradas
+- [ ] Códigos de estado HTTP apropiados (200, 201, 404, 500)
+- [ ] Logging básico en consola
+
+### 🔄 Migración del Frontend
+- [ ] Reemplazar `localStorage` con `fetch` al backend
+- [ ] Adaptar hooks para manejar estados de loading
+- [ ] Implementar error handling en el frontend
+- [ ] Agregar indicadores de carga
+
+---
+
+## v6.0 - Backend con Express
+
+### 🎯 Objetivos de la Fase
+Refactorizar el servidor a Express para simplificar el código y agregar middleware.
+
+### 📦 Migración a Express
+
+#### Setup de Express
+- [ ] Instalar Express `npm install express -E`
+- [ ] Usar `node --watch index.js` para correr el servidor
+- [ ] Instalar cors `npm install cors -E` o hacerlo manual
+
+#### Refactorización del Servidor
+- [ ] Migrar servidor HTTP a Express
+- [ ] Implementar middleware de Express
+  - [ ] `express.json()` para parsear body entenderlo y hacerlo a mano
+  - [ ] `cors()` para CORS, primero hacerlo a mano
+  - [ ] Middleware custom de logging
+- [ ] Organizar rutas con Express Router
+- [ ] Separar rutas en archivos dedicados
+
+#### Arquitectura Mejorada
+```
+backend/
+├── src/
+│   ├── server.js
+│   ├── app.js
+│   ├── routes/
+│   │   └── tasks.routes.js
+│   ├── controllers/
+│   │   └── tasks.controller.js
+│   ├── services/
+│   │   └── tasks.service.js
+│   └── data/
+│       └── tasks.json
+├── package.json
+└── .env
+```
+
+#### Features de Express
+- [ ] Router modular para tareas
+- [ ] Middleware de validación
+- [ ] Middleware de error handling
+- [ ] Variables de entorno con `dotenv`
+- [ ] Separación en capas (routes → controllers → services)
+
+#### Validación y Seguridad Básica
+- [ ] Validación de inputs mejorada
+- [ ] Helmet.js para headers de seguridad
+- [ ] Rate limiting básico
+- [ ] Sanitización de datos
+
+### ✅ Características Implementadas
+
+#### API REST Mejorada
+- [ ] Rutas organizadas con Express Router
+- [ ] Controllers para lógica de negocio
+- [ ] Services para operaciones de datos
+- [ ] Middleware chain bien estructurado
+
+#### Error Handling
+- [ ] Middleware de manejo de errores centralizado
+- [ ] Errores personalizados con status codes
+- [ ] Logging de errores estructurado
+
+---
+
+## v7.0 - Backend con Base de Datos
+
+### 🎯 Objetivos de la Fase
+Migrar de JSON file system a una base de datos real.
+
+### 📦 Setup de Base de Datos
+
+#### Instalación
+- [ ] Instalar PostgreSQL localmente
+- [ ] Crear base de datos: `createdb todo_app`
+- [ ] Instalar driver `npm install pg -E`
+- [ ] Instalar tipos `npm install -D @types/pg -E`
+- [ ] Crear `.env` con `DATABASE_URL=postgresql://user:pass@localhost:5432/todo_app`
+
+#### Schema SQL
+- [ ] Crear `db/schema.sql`
+```sql
+  CREATE TABLE tasks (
+    id SERIAL PRIMARY KEY,
+    text VARCHAR(255) NOT NULL,
+    completed BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  );
+```
+- [ ] Ejecutar: `psql -U postgres -d todo_app -f db/schema.sql`
+
+#### Configuración del Pool
+- [ ] Crear `db/connection.js`
+```typescript
+  import { Pool } from 'pg'
+  export const pool = new Pool({
+    connectionString: process.env.DATABASE_URL
+  })
+```
+
+#### Queries SQL
+- [ ] Crear `db/queries.ts` con operaciones CRUD
+```typescript
+  export const queries = {
+    getAll: () => pool.query('SELECT * FROM tasks ORDER BY created_at DESC'),
+    create: (text: string) => pool.query('INSERT INTO tasks (text) VALUES ($1) RETURNING *', [text]),
+    update: (id: number, text: string, completed: boolean) =>
+      pool.query('UPDATE tasks SET text = $1, completed = $2 WHERE id = $3 RETURNING *', [text, completed, id]),
+    delete: (id: number) => pool.query('DELETE FROM tasks WHERE id = $1', [id])
+  }
+```
+
+#### Migración
+- [ ] Reemplazar operaciones `fs` con `queries` en el service layer
+- [ ] Mantener la misma API (sin breaking changes)
+
+### 📁 Estructura Final
+```
+backend/
+├── src/
+│   ├── db/
+│   │   ├── connection.js     # Pool
+│   │   ├── schema.sql        # Schema
+│   │   └── queries.js        # CRUD queries
+│   ├── services/
+│   │   └── tasks.service.js  # Usa queries
+│   └── ...
+└── .env
+```
+
+### 🎯 Scripts Útiles
+```json
+{
+  "scripts": {
+    "db:setup": "psql -U postgres -d todo_app -f src/db/schema.sql"
+  }
+}
+```
