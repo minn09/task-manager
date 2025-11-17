@@ -151,22 +151,4 @@ export default defineConfig([
 ---
 
 ## v4.0 - Nivel Avanzado (PRONTO)
----
 
-## 🎨 Features de UI/UX Planeadas
-
-### Diseño Visual
-- [ ] Sistema de diseño consistente
-- [ ] Responsive design para todos los dispositivos
-- [ ] Microinteracciones
-- [ ] Skeleton loaders
-- [ ] Smooth scrolling
-- [ ] Glassmorphism effects
-
-### Experiencia de Usuario
-- [ ] Onboarding para nuevos usuarios
-- [ ] Tour guiado
-- [ ] Tooltips informativos
-- [ ] Undo/Redo functionality
-- [ ] Bulk actions (selección múltiple)
-- [ ] Quick actions menu
