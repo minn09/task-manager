@@ -185,8 +185,8 @@ Construir un servidor HTTP básico con Node.js puro y entender los fundamentos d
 ### ✅ Características a Implementar
 
 #### Setup Inicial
-- [ ] Inicializar proyecto Node.js (`npm init`)
-- [ ] Crear estructura de carpetas básica
+- [x] Inicializar proyecto Node.js (`npm init`)
+- [x] Crear estructura de carpetas básica
   ```
   backend/
   ├── server.js
@@ -194,41 +194,25 @@ Construir un servidor HTTP básico con Node.js puro y entender los fundamentos d
   │   └── tasks.json
   └── package.json
   ```
-- [ ] Configurar scripts en package.json (`start`, `dev`)
+- [x] Configurar scripts en package.json (`start`, `dev`)
 
 #### Servidor HTTP Básico
-- [ ] Crear servidor con módulo `http` de Node.js
-- [ ] Configurar puerto y hostname
-- [ ] Implementar manejo básico de rutas
-- [ ] Parsear body de requests manualmente
-- [ ] Configurar CORS básico
+- [x] Crear servidor con módulo `http` de Node.js
+- [x] Configurar puerto y hostname
+- [x] Implementar manejo básico de rutas
+- [x] Parsear body de requests manualmente
 
 #### API REST con Node Vanilla
-- [ ] `GET /tasks` - Obtener todas las tareas
-- [ ] `POST /tasks` - Crear nueva tarea
-- [ ] `PUT /tasks/:id` - Actualizar tarea
-- [ ] `DELETE /tasks/:id` - Eliminar tarea
-- [ ] `GET /tasks/:id` - Obtener tarea específica
-
-#### Persistencia con File System
-- [ ] Usar módulo `fs` para leer/escribir archivo JSON
-- [ ] Implementar funciones CRUD con `fs.promises`
-- [ ] Manejo de errores al leer/escribir archivos
-- [ ] Validación básica de datos
+- [x] `GET /tasks` - Obtener todas las tareas
+- [x] `POST /tasks` - Crear nueva tarea
 
 #### Funcionalidades Core
-- [ ] Generar IDs únicos (UUID o timestamp)
-- [ ] Validación de datos de entrada
-- [ ] Respuestas JSON estructuradas
-- [ ] Códigos de estado HTTP apropiados (200, 201, 404, 500)
-- [ ] Logging básico en consola
+- [x] Generar IDs únicos (UUID o timestamp)
+- [x] Códigos de estado HTTP apropiados (200, 201, 404, 500)
 
 ### 🔄 Migración del Frontend
-- [ ] Reemplazar `localStorage` con `fetch` al backend
-- [ ] Adaptar hooks para manejar estados de loading
-- [ ] Implementar error handling en el frontend
-- [ ] Agregar indicadores de carga
-
+- [x] Reemplazar `localStorage` con `fetch` al backend
+- [x] Implementar error handling en el frontend
 ---
 
 ## v6.0 - Backend con Express
