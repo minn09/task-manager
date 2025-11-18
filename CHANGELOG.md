@@ -156,21 +156,16 @@ export default defineConfig([
 Expandir funcionalidad y mejorar la arquitectura de componentes.
 
 #### Routing basico
-- [ ] window.location.pathname (MPA -> Multi Page Aplication)
-- [ ] Rutas:
-  - [ ] `/`          - Home con todas las tareas
-  - [ ] `/active`    - Tareas activas
-  - [ ] `/completed` - Tareas completadas
-
-#### Formularios Mejorados
-- [ ] Validaciones básicas
-- [ ] Feedback visual de errores
+- [x] window.location.pathname (MPA -> Multi Page Aplication)
+- [x] Rutas:
+  - [x] `/`          - Home con todas las tareas
+  - [x] `/active`    - Tareas activas
+  - [x] `/completed` - Tareas completadas
 
 #### Primeros customs hooks
-- [ ] `useTaskForm` - Hook para el formulario
-- [ ] `useLocalStorage` - Hook para persistencia
-- [ ] `useFilter` - Hook para filtros
-- [ ] `useSearch` - Hook para búsqueda
+- [x] `useTaskForm` - Hook para el formulario
+- [x] `useLocalStorage` - Hook para persistencia
+- [x] `useFilter` - Hook para filtros
 
 ---
 
