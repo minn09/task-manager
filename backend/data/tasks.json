@@ -1,0 +1,8 @@
+[
+  { "id": 1, "text": "Comprar alimentos" },
+  { "id": 2, "text": "Enviar correo al cliente" },
+  { "id": 3, "text": "Limpiar el escritorio" },
+  { "id": 4, "text": "Preparar presentación" },
+  { "id": 5, "text": "Revisar informes" },
+  {"id": 6, "text": "Tengo dos meses"}
+]

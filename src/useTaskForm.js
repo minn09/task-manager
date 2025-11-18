@@ -11,8 +11,25 @@ export default function useTaskForm() {
 
   // Guarda las tareas en localStorage cada vez que cambian
   useEffect(() => {
-    setLocalStorage(tasks)
-  }, [tasks])
+    const loadTasks = async () => {
+      try {
+        const data = await fetchData()
+        setTasks(data)
+        setLocalStorage(data)
+      } catch (error) {
+        console.error('Error cargando tareas:', error)
+      }
+    }
+    loadTasks()
+  }, [])
+
+  const fetchData = async () => {
+    const res = await fetch('http://localhost:3000/tasks')
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status} - ${res.statusText}`)
+    }
+    return await res.json()
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
