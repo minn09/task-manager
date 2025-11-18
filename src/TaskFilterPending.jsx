@@ -1,5 +1,5 @@
 import './style.css'
-export function TaskFilter({ tasks }) {
+export function TaskFilterPending({ tasks }) {
   const pending = tasks.filter(task => !task.completed)
   const finished = tasks.filter(task => task.completed)
   return (

@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react'
+import useLocalStorage from './useLocalStorage';
 
-export default function useTask() {
+export default function useTaskForm() {
+  const { getLocalStorage, setLocalStorage } = useLocalStorage()
   const [tasks, setTasks] = useState(() =>
-    JSON.parse(localStorage.getItem('tasks') || '[]')
+    JSON.parse(getLocalStorage() || '[]')
   )
   const [inputValue, setInputValue] = useState('');
   const [editingIndex, setEditingIndex] = useState(null)
 
   // Guarda las tareas en localStorage cada vez que cambian
   useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks))
+    setLocalStorage(tasks)
   }, [tasks])
 
   const handleSubmit = (e) => {

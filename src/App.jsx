@@ -1,33 +1,25 @@
-import useTask from './useTask';
-import { TaskForm } from './TaskForm';
-import { TaskList } from './TaskList';
-import { TaskFilter } from './TaskFilter';
+import { HomePage } from './HomePage';
+import { FiltersActive } from './FiltersActive'
+import { FiltersCompleted } from './FiltersCompleted'
+import { Header } from './Header'
+import { NotFoundPage } from './NotFoundPage'
 
 export default function App() {
-  const { tasks, inputValue, editingIndex, handleSubmit, handleInputChange, handleKeyDown, editTask, cancelTask, deleteTask, toggleTask } = useTask()
+  const currentPath = window.location.pathname
 
+  let page = <NotFoundPage />
+
+  if (currentPath === '/') {
+    page = <HomePage />
+  } else if (currentPath === "/active") {
+    page = <FiltersActive />
+  } else if (currentPath === '/completed') {
+    page = <FiltersCompleted />
+  }
   return (
-    <div>
-      <h1>Task manager</h1>
-      <TaskForm
-        handleSubmit={handleSubmit}
-        handleInputChange={handleInputChange}
-        handleKeyDown={handleKeyDown}
-        cancelTask={cancelTask}
-        inputValue={inputValue}
-        editingIndex={editingIndex}
-      />
-
-      <TaskList
-        tasks={tasks}
-        editTask={editTask}
-        deleteTask={deleteTask}
-        toggleTask={toggleTask}
-      />
-
-      <TaskFilter
-        tasks={tasks}
-      />
-    </div>
+    <>
+      <Header />
+      {page}
+    </>
   )
 }
