@@ -172,10 +172,9 @@ Expandir funcionalidad y mejorar la arquitectura de componentes.
 ## v4.0 - Nivel Intermedio-Avanzado
 
 ### 🎯 Objetivos de la Fase
-Implementar mejores manejos de errores y una mejor forma de crear tareas.
+Implementar una mejor forma de crear tareas.
 
 #### Nuevas Features
-- [ ] Categorías/etiquetas para tareas
 - [ ] Modal para crear/editar tareas
 
 ## v5.0 - Backend Fundamentos (Node.js Vanilla)
