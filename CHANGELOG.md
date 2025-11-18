@@ -175,7 +175,7 @@ Expandir funcionalidad y mejorar la arquitectura de componentes.
 Implementar una mejor forma de crear tareas.
 
 #### Nuevas Features
-- [ ] Modal para crear/editar tareas
+- [x] Modal para crear/editar tareas
 
 ## v5.0 - Backend Fundamentos (Node.js Vanilla)
 
