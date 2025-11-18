@@ -172,15 +172,9 @@ Expandir funcionalidad y mejorar la arquitectura de componentes.
 ## v4.0 - Nivel Intermedio-Avanzado
 
 ### 🎯 Objetivos de la Fase
-Implementar patrones de estado global y routing profesional.
-
-#### Gestión de Estado Global
-- [ ] Context API para estado compartido
-- [ ] Reducers para lógica compleja de tareas
-- [ ] `useTasks` - Hook personalizado que consume el contexto
+Implementar mejores manejos de errores y una mejor forma de crear tareas.
 
 #### Nuevas Features
-- [ ] Manejo de errores sofisticado
 - [ ] Categorías/etiquetas para tareas
 - [ ] Modal para crear/editar tareas
 
