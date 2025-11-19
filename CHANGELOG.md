@@ -223,57 +223,17 @@ Refactorizar el servidor a Express para simplificar el código y agregar middlew
 ### 📦 Migración a Express
 
 #### Setup de Express
-- [ ] Instalar Express `npm install express -E`
-- [ ] Usar `node --watch index.js` para correr el servidor
-- [ ] Instalar cors `npm install cors -E` o hacerlo manual
+- [x] Instalar Express `npm install express -E`
+- [x] Usar `node --watch index.js` para correr el servidor
+- [x] Instalar cors `npm install cors -E` o hacerlo manual
 
 #### Refactorización del Servidor
-- [ ] Migrar servidor HTTP a Express
-- [ ] Implementar middleware de Express
-  - [ ] `express.json()` para parsear body entenderlo y hacerlo a mano
-  - [ ] `cors()` para CORS, primero hacerlo a mano
-  - [ ] Middleware custom de logging
+- [x] Migrar servidor HTTP a Express
+- [x] Implementar middleware de Express
+  - [x] `express.json()` para parsear body entenderlo y hacerlo a mano
+  - [x] `cors()` para CORS
 - [ ] Organizar rutas con Express Router
 - [ ] Separar rutas en archivos dedicados
-
-#### Arquitectura Mejorada
-```
-backend/
-├── src/
-│   ├── server.js
-│   ├── app.js
-│   ├── routes/
-│   │   └── tasks.routes.js
-│   ├── controllers/
-│   │   └── tasks.controller.js
-│   ├── services/
-│   │   └── tasks.service.js
-│   └── data/
-│       └── tasks.json
-├── package.json
-└── .env
-```
-
-#### Features de Express
-- [ ] Router modular para tareas
-- [ ] Middleware de validación
-- [ ] Middleware de error handling
-- [ ] Variables de entorno con `dotenv`
-- [ ] Separación en capas (routes → controllers → services)
-
-#### Validación y Seguridad Básica
-- [ ] Validación de inputs mejorada
-- [ ] Helmet.js para headers de seguridad
-- [ ] Rate limiting básico
-- [ ] Sanitización de datos
-
-### ✅ Características Implementadas
-
-#### API REST Mejorada
-- [ ] Rutas organizadas con Express Router
-- [ ] Controllers para lógica de negocio
-- [ ] Services para operaciones de datos
-- [ ] Middleware chain bien estructurado
 
 #### Error Handling
 - [ ] Middleware de manejo de errores centralizado

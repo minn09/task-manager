@@ -1,5 +1,5 @@
 const http = require('node:http')
-const tasksJSON = require('./data/tasks.json')
+const tasksJSON = require('../backend/data/tasks.json')
 const PORT = 3000
 
 const processRequest = ((req, res) => {
