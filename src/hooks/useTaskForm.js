@@ -26,9 +26,9 @@ export default function useTaskForm() {
     loadTasks()
   }, [])
 
-  useEffect(() => {
-    setLocalStorage(tasks)
-  }, [tasks])
+  // useEffect(() => {
+  //   setLocalStorage(tasks)
+  // }, [tasks])
 
   const fetchData = async () => {
     const res = await fetch('http://localhost:3000/tasks')
@@ -38,44 +38,50 @@ export default function useTaskForm() {
     return await res.json()
   }
 
-  const createTask = async (data) => {
+  const deleteTaskDB = async (id) => {
     try {
-      const response = await fetch('http://localhost:3000/tasks', {
-        method: "POST",
+      const response = await fetch(`http://localhost:3000/tasks/${id}`, {
+        method: "DELETE",
         headers: {
           "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data),
+        }
       })
 
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
       const responseData = await response.json();
-
       console.log("Success:", responseData);
+
     } catch (error) {
       console.error("Error:", error);
     }
   }
 
-  const handleSubmit = (e) => {
+  const createTask = async (data) => {
+    const response = await fetch('http://localhost:3000/tasks', {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+    if (!response.ok) throw new Error("Error creando tarea")
+    return await response.json()
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const inputValueTrimmed = inputValue.trim()
     if (!inputValueTrimmed) return
-
     if (editingIndex !== null) {
       // Edicion de una tarea
       const newTasks = tasks.map((task, index) =>
         index === editingIndex ? { ...task, text: inputValueTrimmed } : task
       )  // Cuando el índice coincide con editingIndex, reemplazar esa tarea con lo que está en el input de lo contrario mantener la tarea original sin cambios
+      setTasks(newTasks)
       setInputValue('')
       setEditingIndex(null)
-      setTasks(newTasks)
     } else {
       // Creacion de una tarea
-      const newTasks = [...tasks, { text: inputValueTrimmed, completed: false }]
-      setTasks(newTasks)
-      createTask({ text: inputValueTrimmed, completed: false })
+      const created = await createTask({ text: inputValueTrimmed, completed: false })
+      setTasks([...tasks, created])
       setInputValue('')
     }
   }
@@ -106,8 +112,9 @@ export default function useTaskForm() {
   }
 
   const deleteTask = (itemId) => {
-    const updatedTask = tasks.filter((task, index) => index !== itemId) // Quiero todas los indices que NO sean itemId
+    const updatedTask = tasks.filter(task => task.id !== itemId) // Quiero todas los indices que NO sean itemId
     setTasks(updatedTask)
+    deleteTaskDB(itemId)
   }
 
   const toggleTask = (itemId) => {

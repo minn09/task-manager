@@ -250,14 +250,13 @@ Migrar de JSON file system a una base de datos real.
 ### 📦 Setup de Base de Datos
 
 #### Instalación
-- [ ] Instalar PostgreSQL localmente
-- [ ] Crear base de datos: `createdb todo_app`
-- [ ] Instalar driver `npm install pg -E`
-- [ ] Instalar tipos `npm install -D @types/pg -E`
-- [ ] Crear `.env` con `DATABASE_URL=postgresql://user:pass@localhost:5432/todo_app`
+- [x] Instalar PostgreSQL localmente
+- [x] Crear base de datos: `createdb todo_app`
+- [x] Instalar driver `npm install pg -E`
+- [x] Crear `.env` con `DATABASE_URL=postgresql://user:pass@localhost:5432/todo_app`
 
 #### Schema SQL
-- [ ] Crear `db/schema.sql`
+- [x] Crear `db/schema.sql`
 ```sql
   CREATE TABLE tasks (
     id SERIAL PRIMARY KEY,
@@ -266,10 +265,10 @@ Migrar de JSON file system a una base de datos real.
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   );
 ```
-- [ ] Ejecutar: `psql -U postgres -d todo_app -f db/schema.sql`
+- [x] Ejecutar: `psql -U postgres -d todo_app -f db/schema.sql`
 
 #### Configuración del Pool
-- [ ] Crear `db/connection.js`
+- [x] Crear `db/connection.js`
 ```typescript
   import { Pool } from 'pg'
   export const pool = new Pool({
@@ -278,7 +277,7 @@ Migrar de JSON file system a una base de datos real.
 ```
 
 #### Queries SQL
-- [ ] Crear `db/queries.ts` con operaciones CRUD
+- [x] Crear `db/queries.ts` con operaciones CRUD
 ```typescript
   export const queries = {
     getAll: () => pool.query('SELECT * FROM tasks ORDER BY created_at DESC'),
@@ -290,8 +289,15 @@ Migrar de JSON file system a una base de datos real.
 ```
 
 #### Migración
-- [ ] Reemplazar operaciones `fs` con `queries` en el service layer
-- [ ] Mantener la misma API (sin breaking changes)
+- [x] Reemplazar operaciones `fs` con `queries` en el service layer
+- [x] Mantener la misma API (sin breaking changes)
+
+#### Features
+- [ ] Hacer check a la tarea y que se actualize
+- [ ] Editar la tarea
+- [ ] Agregar alertas al editar usar `https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm` el metodo confirm, para editar o eliminar
+- [ ] Hacer check a la tarea y que se actualize
+
 
 ### 📁 Estructura Final
 ```

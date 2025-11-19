@@ -1,4 +1,4 @@
-import useFilter from "./useFilter"
+import useFilter from "../../useFilter"
 export function FiltersActive() {
   const { pending } = useFilter()
   return (

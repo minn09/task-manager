@@ -1,4 +1,4 @@
-import useFilter from "./useFilter"
+import useFilter from "../../useFilter"
 
 export function FiltersCompleted() {
   const { finished } = useFilter()

@@ -1,4 +1,4 @@
-import Modal from './Modal';
+import Modal from '../ui/Modal';
 import { useState } from 'react';
 
 export function TaskForm({ handleSubmit, inputValue, handleInputChange, handleKeyDown, editingIndex, cancelTask }) {

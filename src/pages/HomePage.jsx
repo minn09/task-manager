@@ -1,6 +1,6 @@
-import useTaskForm from './useTaskForm';
-import { TaskForm } from './TaskForm';
-import { TaskList } from './TaskList';
+import useTaskForm from '../useTaskForm';
+import { TaskForm } from '../components/tasks/TaskForm';
+import { TaskList } from '../components/tasks/TaskList';
 export function HomePage() {
   const { tasks, inputValue, editingIndex, handleSubmit, handleInputChange, handleKeyDown, editTask, cancelTask, deleteTask, toggleTask } = useTaskForm()
   return (
