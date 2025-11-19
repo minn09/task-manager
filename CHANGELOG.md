@@ -232,13 +232,13 @@ Refactorizar el servidor a Express para simplificar el código y agregar middlew
 - [x] Implementar middleware de Express
   - [x] `express.json()` para parsear body entenderlo y hacerlo a mano
   - [x] `cors()` para CORS
-- [ ] Organizar rutas con Express Router
-- [ ] Separar rutas en archivos dedicados
+- [x] Organizar rutas con Express Router
+- [x] Separar rutas en archivos dedicados
 
 #### Error Handling
-- [ ] Middleware de manejo de errores centralizado
-- [ ] Errores personalizados con status codes
-- [ ] Logging de errores estructurado
+- [x] Middleware de manejo de errores centralizado
+- [x] Errores personalizados con status codes
+- [x] Logging de errores estructurado
 
 ---
 
