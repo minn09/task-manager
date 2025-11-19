@@ -1,16 +1,17 @@
 {
   "name": "backend",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
   "description": "Backend for task-manager",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node --watch app.js"
+    "dev": "node --watch server.js"
   },
   "license": "ISC",
   "dependencies": {
     "cors": "2.8.5",
-    "express": "5.1.0"
+    "express": "5.1.0",
+    "pg": "8.16.3"
   }
 }
