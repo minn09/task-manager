@@ -4,7 +4,6 @@ export function TaskItem({ tasks, editTask, deleteTask, toggleTask }) {
       {
         tasks.map((task, index) => (
           <li key={index} className={task.completed ? 'completed' : ''}>
-            {console.log(task)}
             <input
               type="checkbox"
               name="checkbox"
