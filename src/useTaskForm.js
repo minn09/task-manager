@@ -13,9 +13,12 @@ export default function useTaskForm() {
   useEffect(() => {
     const loadTasks = async () => {
       try {
+        const stored = getLocalStorage()
+        if (stored && JSON.parse(stored).length > 0) {
+          return
+        }
         const data = await fetchData()
         setTasks(data)
-        setLocalStorage(data)
       } catch (error) {
         console.error('Error cargando tareas:', error)
       }
@@ -23,12 +26,36 @@ export default function useTaskForm() {
     loadTasks()
   }, [])
 
+  useEffect(() => {
+    setLocalStorage(tasks)
+  }, [tasks])
+
   const fetchData = async () => {
     const res = await fetch('http://localhost:3000/tasks')
     if (!res.ok) {
       throw new Error(`Error HTTP: ${res.status} - ${res.statusText}`)
     }
     return await res.json()
+  }
+
+  const createTask = async (data) => {
+    try {
+      const response = await fetch('http://localhost:3000/tasks', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data),
+      })
+
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+      const responseData = await response.json();
+
+      console.log("Success:", responseData);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   }
 
   const handleSubmit = (e) => {
@@ -48,6 +75,7 @@ export default function useTaskForm() {
       // Creacion de una tarea
       const newTasks = [...tasks, { text: inputValueTrimmed, completed: false }]
       setTasks(newTasks)
+      createTask({ text: inputValueTrimmed, completed: false })
       setInputValue('')
     }
   }
@@ -80,7 +108,6 @@ export default function useTaskForm() {
   const deleteTask = (itemId) => {
     const updatedTask = tasks.filter((task, index) => index !== itemId) // Quiero todas los indices que NO sean itemId
     setTasks(updatedTask)
-    localStorage.setItem('tasks', JSON.stringify(updatedTask))
   }
 
   const toggleTask = (itemId) => {
