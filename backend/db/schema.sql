@@ -1,0 +1,10 @@
+CREATE DATABASE todo_app;
+
+\c todo_app;
+
+CREATE TABLE tasks (
+    id SERIAL PRIMARY KEY,
+    text VARCHAR(255) NOT NULL,
+    completed BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

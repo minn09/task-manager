@@ -1,14 +1,15 @@
-###
+### Obtener todas los recursos (tareas)
 GET http://localhost:3000/tasks
 
-###
-GET http://localhost:3000/tasks
-
-###
+### Crear un recurso (tarea)
 POST http://localhost:3000/tasks
 Content-Type: application/json
 
   {
     "id": 5,
-    "message": "Comment5"
+    "text": "Comment5",
+    "completed": true
   }
+
+### Eliminar una recurso (tarea)
+DELETE http://localhost:3000/tasks/4
